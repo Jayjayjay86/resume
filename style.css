@@ -1,0 +1,198 @@
+
+html {
+    font-size: 21px;
+    
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(233, 237, 238);
+}
+img {
+    max-height: 10rem;
+    border-radius: 50%;
+    margin: 0.5rem;
+    
+}
+
+ul{
+    margin: 0.3rem;
+    padding: 0.3rem;
+}
+a{color: rgb(67, 18, 18);
+}
+a:hover{
+    color: rgb(51, 102, 153);
+}
+main {
+    display: flex;
+}
+.mainContainer {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+.left{
+    padding: .5rem;
+    background-color: rgb(129, 124, 124);
+border-right: 4px solid rgb(105, 102, 102);
+}
+.leftHeadingSection{
+    margin: 0.3rem;
+}
+.leftBodySection{
+    margin: 0.3rem;
+}
+
+/* Left Sections */
+.imageSection{
+    padding: 1rem;
+}
+.detailsSection{
+    text-align: center;
+    padding: .5rem;
+}
+.locationArticle,.timezoneArticle,.emailArticle{
+    margin: .5rem;
+    font-size: 18px;
+}
+.socialmediaSection{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0.5rem;
+}
+
+.socialmediaSection i{
+    border-radius: 5px;
+    background-color: aliceblue;
+    margin: .2rem;
+    border: 2px solid black;
+    border-radius: .4rem;
+    padding: .9rem;
+    font-size:2rem;
+}
+.experienceSection{
+    text-align: center;
+    padding: 0.5rem;
+}
+.skillsetSection{
+    text-align: center;
+    padding: 0.5rem;
+}
+.tagsSection{display: grid;
+grid-template-columns: 1fr 1fr;}
+.tagsSection span{
+    text-align: center;
+    background-color: aliceblue;
+    font-size: .6rem;
+    border: 2px solid black;
+    border-radius: .4rem;
+    padding: 0.3rem;
+    margin: .2rem;
+}
+/* Right Sections */
+.right{ 
+    margin: 1;
+    padding: 2rem;
+    background-color: rgb(248, 248, 249);
+}
+.rightHeadingSection{
+    text-align: center;
+    margin: 1rem 0 1rem 0;
+}
+.rightTop{
+    margin: 4rem;
+}
+.rightTop h2{
+    text-align: center;
+   
+}
+.objectiveSection{
+    margin: 2rem;
+}
+.quickLinksSections{
+text-align: center;
+}
+.linksSection{    
+    font-size: 15px;
+    display: flex;
+    flex: row;}
+.workHistorySection,.historyItem{
+    margin: 1rem;
+}
+.historyItem{
+    background-color: rgb(242, 240, 238);
+    padding: 0.2rem;
+    margin: .5rem ;
+    border-radius: 10px;
+    border: 3px solid grey;
+}
+.historyItemRole,.historyItemDate,.historyItemDetails{
+    margin: 1rem 0 1rem 0;
+    
+    
+}
+.historyItemRole,.historyItemDate{text-align: center;}
+.historyItemDetails{padding: 1rem;}
+.historyItemList{padding: .2rem;}
+.historyItemApps{
+    padding: 1rem;
+
+}
+.historyItemAppsHeading{
+    text-align: center;
+}
+.historyItemAppsHeading,.historyItemAppsItem{
+    
+    padding: .5rem 0 .5rem 0 ;
+    font-size: 14px;
+}
+
+.appItemSkillSection{
+    margin: 1rem;
+    grid-template-columns: auto;
+}
+
+.appItemSkillSection span{
+    justify-content: space-around;
+    text-align: center;
+        background-color: rgb(129, 124, 124);
+        font-size: .6rem;
+        border: 2px solid black;
+        border-radius: .4rem;
+        padding: 0.3rem;       
+       color: aliceblue;
+    }
+
+    /* Media Queries */
+@media only screen and (max-width: 768px) {
+    /* Adjust styles for screens up to 768px wide */
+
+    main {
+        flex-direction: column;
+    }
+
+    .mainContainer {
+        grid-template-columns: 1fr; /* Change to a single column layout */
+    }
+    .linksSection{flex-direction: column;
+    }
+    .linksSection a{padding: .5rem;
+    }
+    .left {
+        border-right: none; /* Remove right border in smaller screens */
+    }
+
+    /* Adjust other styles as needed */
+}
+
+@media only screen and (max-width: 480px) {
+    /* Further adjustments for screens up to 480px wide */
+
+    /* Example: hide some elements or adjust font sizes */
+
+    .socialmediaSection i {
+        font-size: 1.5rem; /* Decrease font size for social media icons */
+    }
+
+    /* Adjust other styles as needed */
+}
