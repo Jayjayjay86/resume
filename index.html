@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name | Full-Stack Developer</title>
-  <link rel="stylesheet" href="styles/base.css">
+  <title>Your Name | Full-Stack Developer & Educator</title>
+  <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- Dark Mode Toggle -->
-  <button id="theme-toggle" aria-label="Toggle dark mode">
-    <i class="fas fa-moon"></i>
-  </button>
-
   <header>
     <div class="container">
       <h1>Your Name</h1>
-      <p class="tagline">Building tools for education and beyond</p>
+      <p class="tagline">Full-Stack Developer & Tech Educator</p>
       <div class="contact">
         <a href="mailto:email@example.com"><i class="fas fa-envelope"></i> email@example.com</a>
         <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i> GitHub</a>
@@ -26,36 +21,95 @@
   </header>
 
   <main class="container">
-    <!-- Project Filters -->
-    <section id="filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="frontend">Frontend</button>
-      <button class="filter-btn" data-filter="backend">Backend</button>
-      <button class="filter-btn" data-filter="iot">IoT</button>
+    <!-- Intro Section -->
+    <section id="intro">
+      <p>Transitioning from 13+ years in high-stakes construction management to tech, with 7 years of <strong>EdTech entrepreneurship</strong>. Passionate about building tools that solve real-world problems with <strong>React, Node.js, Python, and IoT</strong>.</p>
     </section>
 
-    <!-- Projects Grid (now with filter tags) -->
+    <!-- Skills Grid -->
+    <section id="skills">
+      <h2><i class="fas fa-code"></i> Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Frontend</h3>
+          <ul>
+            <li>React / React Native</li>
+            <li>HTML/CSS</li>
+            <li>PyQt</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>Backend</h3>
+          <ul>
+            <li>Node.js / Express</li>
+            <li>Python (Flask, Django)</li>
+            <li>LINE API</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>DevOps & Tools</h3>
+          <ul>
+            <li>Bash Scripting</li>
+            <li>GitHub</li>
+            <li>Home Server Mgmt</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Showcase -->
     <section id="projects">
+      <h2><i class="fas fa-laptop-code"></i> Projects</h2>
       <div class="project-grid">
-        <div class="project-card" data-tags="frontend backend">
+        <!-- Project 1 -->
+        <div class="project-card" onclick="toggleDetails('project1')">
           <h3>LINE Chatbot for Teaching</h3>
           <p class="tech-stack">Node.js, LINE API</p>
-          <div class="project-details">
-            <p>Automated student messaging for 50+ users.</p>
-            <a href="#" class="github-link"><i class="fab fa-github"></i> Code</a>
+          <div class="project-details" id="project1">
+            <p>Automated student messaging and payment reminders, handling 50+ weekly users.</p>
+            <a href="#" class="github-link"><i class="fab fa-github"></i> View Code</a>
           </div>
         </div>
-        <div class="project-card" data-tags="iot">
+        <!-- Project 2 -->
+        <div class="project-card" onclick="toggleDetails('project2')">
           <h3>Humidifier Control App</h3>
           <p class="tech-stack">PyQt, IoT Sensors</p>
-          <div class="project-details">
-            <p>Automated environment control with IR.</p>
-            <a href="#" class="github-link"><i class="fab fa-github"></i> Code</a>
+          <div class="project-details" id="project2">
+            <p>Automated environment control with IR remote integration for AC units.</p>
+            <a href="#" class="github-link"><i class="fab fa-github"></i> View Code</a>
           </div>
+        </div>
+        <!-- Add more projects -->
+      </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience">
+      <h2><i class="fas fa-briefcase"></i> Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Co-Owner & Tech Educator</h3>
+          <p class="timeline-meta">ABC English Tuition | 2017–Present</p>
+          <ul>
+            <li>Built React Native apps for student data tracking.</li>
+            <li>Automated admin tasks using Node.js + LINE API.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h3>Scaffolding Manager</h3>
+          <p class="timeline-meta">UK Construction | 2004–2017</p>
+          <ul>
+            <li>Led teams on $2M+ projects (e.g., Walkie Talkie Building).</li>
+            <li>Managed risk assessments and compliance.</li>
+          </ul>
         </div>
       </div>
     </section>
   </main>
+
+  <footer>
+    <p>© 2023 Your Name | Built with HTML/CSS/JS</p>
+  </footer>
 
   <script src="scripts/main.js"></script>
 </body>
