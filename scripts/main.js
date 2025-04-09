@@ -1,26 +1,38 @@
-// Dark Mode Toggle
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle.addEventListener('click', () => {
-  const html = document.documentElement;
-  const isDark = html.getAttribute('data-theme') === 'dark';
-  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-});
+// Toggle project details
+function toggleDetails(id) {
+  const details = document.getElementById(id);
+  details.classList.toggle('active');
+}
 
-// Project Filters
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    const filter = btn.dataset.filter;
-    document.querySelectorAll('.project-card').forEach(card => {
-      const tags = card.dataset.tags.split(' ');
-      if (filter === 'all' || tags.includes(filter)) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
-    });
-  });
+// Optional: Typewriter effect for tagline
+const taglines = [
+  "Full-Stack Developer & Educator",
+  "React | Node.js | Python",
+  "EdTech Innovator"
+];
+let count = 0;
+
+function typeWriter() {
+  const tagline = document.querySelector('.tagline');
+  let i = 0;
+  let currentText = taglines[count % taglines.length];
+  
+  tagline.textContent = '';
+  const typing = setInterval(() => {
+    if (i < currentText.length) {
+      tagline.textContent += currentText.charAt(i);
+      i++;
+    } else {
+      clearInterval(typing);
+      setTimeout(() => {
+        typeWriter();
+        count++;
+      }, 2000);
+    }
+  }, 100);
+}
+
+// Init on load
+document.addEventListener('DOMContentLoaded', () => {
+  typeWriter();
 });
