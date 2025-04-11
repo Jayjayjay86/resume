@@ -1,38 +1,120 @@
-// Toggle project details
+// Toggle project details with smooth animation
 function toggleDetails(id) {
   const details = document.getElementById(id);
-  details.classList.toggle('active');
+  const isActive = details.classList.contains('active');
+  
+  // Close all other open project details
+  document.querySelectorAll('.project-details.active').forEach(item => {
+    if (item.id !== id) {
+      item.classList.remove('active');
+      item.style.maxHeight = null;
+    }
+  });
+  
+  // Toggle current project
+  if (isActive) {
+    details.classList.remove('active');
+    details.style.maxHeight = null;
+  } else {
+    details.classList.add('active');
+    details.style.maxHeight = details.scrollHeight + 'px';
+  }
 }
 
-// Optional: Typewriter effect for tagline
+// Typewriter effect with improved performance
 const taglines = [
   "Full-Stack Developer & Educator",
   "React | Node.js | Python",
-  "EdTech Innovator"
+  "EdTech Innovator",
+  "Problem Solver",
+  "Tech Educator"
 ];
-let count = 0;
+
+let currentTagline = 0;
+let isDeleting = false;
+let text = '';
+let typingSpeed = 100;
+let pauseTime = 2000;
 
 function typeWriter() {
-  const tagline = document.querySelector('.tagline');
-  let i = 0;
-  let currentText = taglines[count % taglines.length];
+  const taglineElement = document.querySelector('.tagline');
+  const fullText = taglines[currentTagline];
   
-  tagline.textContent = '';
-  const typing = setInterval(() => {
-    if (i < currentText.length) {
-      tagline.textContent += currentText.charAt(i);
-      i++;
-    } else {
-      clearInterval(typing);
-      setTimeout(() => {
-        typeWriter();
-        count++;
-      }, 2000);
-    }
-  }, 100);
+  if (isDeleting) {
+    text = fullText.substring(0, text.length - 1);
+    typingSpeed = 50;
+  } else {
+    text = fullText.substring(0, text.length + 1);
+    typingSpeed = 100;
+  }
+  
+  taglineElement.textContent = text;
+  
+  if (!isDeleting && text === fullText) {
+    typingSpeed = pauseTime;
+    isDeleting = true;
+  } else if (isDeleting && text === '') {
+    isDeleting = false;
+    currentTagline = (currentTagline + 1) % taglines.length;
+    typingSpeed = 500;
+  }
+  
+  setTimeout(typeWriter, typingSpeed);
 }
 
-// Init on load
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+// Initialize on load
 document.addEventListener('DOMContentLoaded', () => {
-  typeWriter();
+  const coverImg = document.querySelector('.cover-img');
+  if (coverImg) {
+    // Add error handling
+    coverImg.onerror = function() {
+      console.error("Cover image failed to load");
+      this.style.display = 'none';
+    };
+    
+    if (coverImg.complete) {
+      coverImg.classList.add('loaded');
+    } else {
+      coverImg.addEventListener('load', function() {
+        this.classList.add('loaded');
+      });
+    }
+  }
+  // Start typewriter effect
+  setTimeout(typeWriter, 1000);
+  
+  // Add loaded class to hero image if exists
+  const heroImage = document.querySelector('.hero-image img');
+  if (heroImage) {
+    if (heroImage.complete) {
+      heroImage.classList.add('loaded');
+    } else {
+      heroImage.addEventListener('load', () => {
+        heroImage.classList.add('loaded');
+      });
+    }
+  }
+  
+  // Add intersection observer for animations
+  const animateOnScroll = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.card, .section-title, .differentiator-card, .skill-card').forEach(el => {
+    animateOnScroll.observe(el);
+  });
 });

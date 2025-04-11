@@ -1,1 +1,1 @@
-[![LeetCode](https://leetcode-badge.vercel.app/api/username/stats?theme=dark)](https://leetcode.com/username)
+[![LeetCode](https://leetcode-badge.vercel.app/api/username/stats?theme=dark)](https://leetcode.com/u/user0923fJ/)
